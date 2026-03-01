@@ -2,7 +2,6 @@
 #include "fsl_device_registers.h"
 #include <stdint.h>
 
-
 extern uint32_t _etext;
 extern uint32_t _sdata;
 extern uint32_t _edata;
@@ -10,10 +9,9 @@ extern uint32_t _sbss;
 extern uint32_t _ebss;
 extern uint32_t _stack_top;
 
-void Reset_Handler(void);
+void Reset_Handler(void) __attribute__((naked, noreturn));
 void SystemInit(void);
 void Default_Handler(void) { while (1); }
-
 extern int main(void);
 
 __attribute__((section(".isr_vector"), used))
@@ -33,14 +31,15 @@ const uint32_t vectors[] = {
     (uint32_t)Default_Handler,    /* 15: SysTick Handler */
 };
 
+
+
 __attribute__((naked, noreturn)) 
 void Reset_Handler(void)
 {
-    uint32_t *pSCB_VTOR = (uint32_t *) 0xE000ED08;
-    *pSCB_VTOR = (uint32_t)vectors;
+    SCB->VTOR = (uint32_t)vectors;
 
-    uint32_t *dst = &_sdata;
     uint32_t *src = &_etext;
+    uint32_t *dst = &_sdata;
     while(dst < &_edata) {
         *dst++ = *src++;
     }
@@ -57,9 +56,13 @@ void Reset_Handler(void)
 }
 
 void SystemInit(void) {
-    WWDT0->MOD = 0; 
-    
+    WDT0->MOD = 0; 
     SYSCON->ECC_ENABLE_CTRL = 0;
+    LPCAC0->LPCAC_CTRL |= 1UL;
 
-    SCB->CPACR |= ((3UL << 10*2) | (3UL << 11*2)); 
+    SCB->CPACR |= ((3UL << 10*2) | (3UL << 11*2) | 
+                   (3UL << 0*2)  | (3UL << 1*2));
+
+    __DSB();
+    __ISB();
 }
