@@ -3,7 +3,7 @@ ENTRY(Reset_Handler);
 MEMORY
 {
     FLASH(rx) : ORIGIN = 0x00000000, LENGTH = 2048K
-    RAM(rwx)  : ORIGIN = 0x20000000, LENGTH = 512K
+    RAM(rwx)  : ORIGIN = 0x20000000, LENGTH = 128K
 }
 
 SECTIONS
@@ -43,6 +43,5 @@ SECTIONS
         _ebss = .;
     } > RAM
 
-    _vStackBase = ORIGIN(RAM);
     _stack_top = ORIGIN(RAM) + LENGTH(RAM);
 }
