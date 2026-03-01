@@ -56,7 +56,7 @@ void Reset_Handler(void)
 }
 
 void SystemInit(void) {
-    WDT0->MOD = 0; 
+    WWDT0->MOD = 0; 
     SYSCON->ECC_ENABLE_CTRL = 0;
     LPCAC0->LPCAC_CTRL |= 1UL;
 
