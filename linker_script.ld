@@ -3,7 +3,7 @@ ENTRY(Reset_Handler);
 MEMORY
 {
     FLASH(rx) : ORIGIN = 0x00000000, LENGTH = 2048K
-    RAM(rwx)  : ORIGIN = 0x20000000, LENGTH = 128K
+    RAM(rwx)  : ORIGIN = 0x20000000, LENGTH = 512K
 }
 
 SECTIONS
@@ -42,6 +42,5 @@ SECTIONS
         . = ALIGN(4);
         _ebss = .;
     } > RAM
-
     _stack_top = ORIGIN(RAM) + LENGTH(RAM);
 }
