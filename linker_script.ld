@@ -42,5 +42,7 @@ SECTIONS
         . = ALIGN(4);
         _ebss = .;
     } > RAM
+
+    _vStackBase = ORIGIN(RAM);
     _stack_top = ORIGIN(RAM) + LENGTH(RAM);
 }
