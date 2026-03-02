@@ -1,0 +1,29 @@
+{
+  "configurations": [
+    {
+      "name": "FRDM-MCXN947-Debug",
+      "includePath": [
+        "${workspaceFolder}/**",
+        "C:/Users/david21/OneDrive/Desktop/NXP_SDK/SDK_25_12_00_FRDM-MCXN947/devices/MCXN947",
+        "C:/Users/david21/OneDrive/Desktop/NXP_SDK/SDK_25_12_00_FRDM-MCXN947/CMSIS/Core/Include",
+        "C:/Users/david21/OneDrive/Desktop/NXP_SDK/SDK_25_12_00_FRDM-MCXN947/components/**"
+      ],
+      "defines": [
+        "CPU_MCXN947VDF_cm33_core0",
+        "DEBUG",
+        "__GNUC__" 
+      ],
+      "compilerPath": "C:/nxp/MCUXpressoIDE_25.6.136/ide/tools/bin/arm-none-eabi-gcc.exe",
+      "cStandard": "c11",
+      "cppStandard": "c++17",
+      "intelliSenseMode": "gcc-arm",
+      "compilerArgs": [
+        "-mcpu=cortex-m33",
+        "-mthumb",
+        "-mfpu=fpv5-sp-d16",
+        "-mfloat-abi=hard"
+      ]
+    }
+  ],
+  "version": 4
+}

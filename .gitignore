@@ -1,0 +1,21 @@
+# --- Binare și obiecte rezultate din compilare ---
+*.o
+*.elf
+*.bin
+*.hex
+*.map
+*.d
+
+# --- Foldere de build (dacă vei folosi unul) ---
+build/
+Debug/
+Release/
+
+# --- Fișiere temporare ale sistemului de operare ---
+.DS_Store
+Thumbs.db
+
+# --- Setări specifice VS Code (opțional) ---
+# Dacă lucrezi în echipă, e bine să NU urci setările tale de path-uri (ca c_cpp_properties.json)
+# Dar dacă e proiect personal, le poți lăsa necomentate ca să le ai salvate.
+# .vscode/
